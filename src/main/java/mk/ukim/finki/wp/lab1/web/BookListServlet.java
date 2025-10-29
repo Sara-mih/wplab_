@@ -29,12 +29,38 @@ public class BookListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        IWebExchange webExchange= JakartaServletWebApplication
+        IWebExchange webExchange = JakartaServletWebApplication
                 .buildApplication(getServletContext())
                 .buildExchange(req, resp);
-        WebContext context=new WebContext(webExchange);
-        List<Book> books=bookService.listAll();
+        WebContext context = new WebContext(webExchange);
+//        List<Book> books = bookService.listAll();
+//        context.setVariable("books", books);
+
+        String searchText = req.getParameter("searchText");
+        String ratingParam = req.getParameter("minRating");
+        Double minRating = null;
+
+        if (ratingParam != null && !ratingParam.isEmpty()) {
+            try {
+                minRating = Double.parseDouble(ratingParam);
+            } catch (NumberFormatException ignored) {}
+        }
+
+        List<Book> books;
+        if ((searchText != null && !searchText.isEmpty()) || minRating != null) {
+            books = bookService.searchBooks(searchText, minRating);
+        } else {
+            books = bookService.listAll();
+        }
+
         context.setVariable("books", books);
+        context.setVariable("searchText", searchText);
+        context.setVariable("minRating", ratingParam);
+
         springTemplateEngine.process("listBooks.html", context, resp.getWriter());
+
+
+
+
     }
 }

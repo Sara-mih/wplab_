@@ -31,6 +31,13 @@
     <h1>Welcome to our Book Reservation App</h1>
 </header>
 <main>
+    <form action="/" method="get">
+        <label>Search by title:</label>
+        <input type="text" name="searchText" th:value="${searchText}">
+        <label>Minimum rating:</label>
+        <input type="number" step="0.1" min="0" max="10" name="minRating" th:value="${minRating}">
+        <input type="submit" value="Search">
+    </form>
     <form action="/bookReservation" method="POST">
         <h2>Choose a book:</h2>
         <!-- Display radio buttons for each book,
