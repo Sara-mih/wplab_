@@ -19,6 +19,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> searchBooks(String text, Double rating) {
-        return List.of();
+        if ((text == null || text.isEmpty()) && rating == null) {
+            return listAll();
+        }
+        return bookRepository.searchBooks(text, rating);
     }
 }

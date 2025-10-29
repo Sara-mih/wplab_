@@ -59,8 +59,5 @@ public class BookListServlet extends HttpServlet {
 
         springTemplateEngine.process("listBooks.html", context, resp.getWriter());
 
-
-
-
     }
 }
