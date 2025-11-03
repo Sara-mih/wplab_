@@ -47,6 +47,7 @@
         <div th:each="book : ${books}" class="book-option">
             <input type="radio" name="bookTitle" th:value="${book.title}" required>
             <span th:text="'Title: ' + ${book.title} + ', Genre: ' + ${book.genre} + ', Rating: ' + ${book.averageRating}"></span>
+            <a th:href="@{/details(title=${book.title})}">View Details</a>
         </div>
 
         <h2>Enter your information:</h2>

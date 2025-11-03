@@ -1,5 +1,5 @@
 package mk.ukim.finki.wp.lab1.service;
-import mk.ukim.finki.wp.lab1.Repository.BookRepository;
+import mk.ukim.finki.wp.lab1.repository.BookRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import mk.ukim.finki.wp.lab1.model.Book;

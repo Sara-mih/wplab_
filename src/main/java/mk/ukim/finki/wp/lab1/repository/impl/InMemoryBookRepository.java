@@ -1,9 +1,9 @@
-package mk.ukim.finki.wp.lab1.Repository;
+package mk.ukim.finki.wp.lab1.repository.impl;
+import mk.ukim.finki.wp.lab1.repository.BookRepository;
 import mk.ukim.finki.wp.lab1.bootstrap.DataHolder;
 import mk.ukim.finki.wp.lab1.model.Book;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
